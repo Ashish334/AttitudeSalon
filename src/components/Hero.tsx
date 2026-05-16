@@ -19,7 +19,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <div className="flex items-center justify-center gap-2 mb-6 animate-fade-in pt-3 md:pt-5">
+        <div className="flex items-center justify-center gap-2 mb-6 animate-fade-in pt-2 md:pt-3">
           <Sparkles size={16} className="text-gold-400" />
           <span className="text-gold-400 text-sm font-semibold uppercase tracking-widest">
             Premium Unisex Salon
