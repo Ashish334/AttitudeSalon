@@ -1,15 +1,15 @@
-import { useState, useEffect } from 'react';
-import { Menu, X, Scissors } from 'lucide-react';
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
 
 const links = [
-  { label: 'Home', href: '#home' },
-  { label: 'About', href: '#about' },
-  { label: 'Services', href: '#services' },
-  { label: 'Products', href: '#products' },
-  { label: 'Gallery', href: '#gallery' },
-  { label: 'Reviews', href: '#reviews' },
-  { label: 'Book', href: '#booking' },
-  { label: 'Contact', href: '#contact' },
+  { label: "Home", href: "#home" },
+  { label: "About", href: "#about" },
+  { label: "Services", href: "#services" },
+  { label: "Products", href: "#products" },
+  { label: "Gallery", href: "#gallery" },
+  { label: "Reviews", href: "#reviews" },
+  { label: "Book", href: "#booking" },
+  { label: "Contact", href: "#contact" },
 ];
 
 export default function Navbar() {
@@ -18,26 +18,24 @@ export default function Navbar() {
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+    window.addEventListener("scroll", onScroll);
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   return (
     <nav
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-400 ${
-        scrolled ? 'bg-salon-dark shadow-2xl py-3' : 'bg-transparent py-5'
+        scrolled ? "bg-salon-dark shadow-2xl py-3" : "bg-transparent py-5"
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
         <a href="#home" className="flex items-center gap-2 group">
-          <div className="w-9 h-9 rounded-full bg-gold-600 flex items-center justify-center group-hover:bg-gold-500 transition-colors">
-            <Scissors size={18} className="text-white" />
-          </div>
-          <div>
-            <div className="text-white font-heading font-bold text-lg leading-none">Attitude</div>
-            <div className="text-gold-400 text-[10px] uppercase tracking-widest leading-none">Unisex Salon</div>
-          </div>
+          <img
+            src="/images/logo.webp"
+            alt="Attitude Unisex Salon"
+            className="h-20 w-auto object-contain"
+          />
         </a>
 
         {/* Desktop links */}
@@ -89,7 +87,11 @@ export default function Navbar() {
               </li>
             ))}
             <li>
-              <a href="#booking" className="btn-gold text-sm inline-block mt-2" onClick={() => setOpen(false)}>
+              <a
+                href="#booking"
+                className="btn-gold text-sm inline-block mt-2"
+                onClick={() => setOpen(false)}
+              >
                 Book Appointment
               </a>
             </li>

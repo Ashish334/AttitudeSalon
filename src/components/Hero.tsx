@@ -1,4 +1,4 @@
-import { ChevronDown, Sparkles } from 'lucide-react';
+import { ChevronDown, Sparkles } from "lucide-react";
 
 export default function Hero() {
   return (
@@ -11,7 +11,7 @@ export default function Hero() {
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
           backgroundImage:
-            'url(https://images.pexels.com/photos/3992874/pexels-photo-3992874.jpeg)',
+            "url(https://images.pexels.com/photos/3992874/pexels-photo-3992874.jpeg)",
         }}
       />
       {/* Overlay */}
@@ -19,7 +19,7 @@ export default function Hero() {
 
       {/* Content */}
       <div className="relative z-10 text-center px-4 max-w-4xl mx-auto">
-        <div className="flex items-center justify-center gap-2 mb-6 animate-fade-in">
+        <div className="flex items-center justify-center gap-2 mb-6 animate-fade-in pt-3 md:pt-5">
           <Sparkles size={16} className="text-gold-400" />
           <span className="text-gold-400 text-sm font-semibold uppercase tracking-widest">
             Premium Unisex Salon
@@ -27,7 +27,7 @@ export default function Hero() {
           <Sparkles size={16} className="text-gold-400" />
         </div>
 
-        <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 animate-slide-up leading-tight">
+        <h1 className="font-heading text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 animate-slide-up leading-tight pt-8 md:pt-12">
           Attitude
           <br />
           <span className="text-gold-400 italic">Unisex Salon</span>
@@ -46,20 +46,25 @@ export default function Hero() {
           <a href="#booking" className="btn-gold text-base px-8 py-4">
             Book Appointment
           </a>
-          <a href="#services" className="btn-outline border-white/60 text-white hover:bg-white/10 hover:border-white text-base px-8 py-4">
+          <a
+            href="#services"
+            className="btn-outline border-white/60 text-white hover:bg-white/10 hover:border-white text-base px-8 py-4"
+          >
             Explore Services
           </a>
         </div>
 
         {/* Stats */}
-        <div className="mt-16 grid grid-cols-3 gap-6 max-w-sm mx-auto animate-fade-in">
+        <div className="mt-16 grid grid-cols-3 gap-6 max-w-sm mx-auto animate-fade-in  pb-2 md:pb-6">
           {[
-            { num: '5000+', label: 'Happy Clients' },
-            { num: '8+', label: 'Years Experience' },
-            { num: '15+', label: 'Expert Stylists' },
+            { num: "5000+", label: "Happy Clients" },
+            { num: "8+", label: "Years Experience" },
+            { num: "15+", label: "Expert Stylists" },
           ].map((s) => (
             <div key={s.label} className="text-center">
-              <div className="text-gold-400 font-heading font-bold text-2xl">{s.num}</div>
+              <div className="text-gold-400 font-heading font-bold text-2xl">
+                {s.num}
+              </div>
               <div className="text-gray-400 text-xs mt-0.5">{s.label}</div>
             </div>
           ))}
@@ -69,9 +74,9 @@ export default function Hero() {
       {/* Scroll indicator */}
       <a
         href="#about"
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 hover:text-gold-400 transition-colors animate-float"
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/60 hover:text-gold-400 transition-colors animate-float  pb-2 md:pb-8"
       >
-        <ChevronDown size={28} />
+        <ChevronDown size={30} />
       </a>
     </section>
   );
