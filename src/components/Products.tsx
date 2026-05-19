@@ -1,54 +1,126 @@
-import { ShoppingBag } from 'lucide-react';
+import { ShoppingBag } from "lucide-react";
 
-const WHATSAPP = '919999999999';
+const WHATSAPP = "918808841835";
 
 const products = [
   {
-    name: 'Keratin Hair Serum',
-    desc: 'Smoothens frizz, adds shine and protects against heat damage.',
-    price: '₹549',
-    image: 'https://images.pexels.com/photos/3737573/pexels-photo-3737573.jpeg',
-    tag: 'Best Seller',
+    name: "Dione Keratin Duo Shampoo & Conditioner",
+    desc: "Argan oil and keratin-infused shampoo & conditioner for smooth, shiny, and healthy-looking hair.",
+    price: "₹2000",
+    image: "/images/products/KeratinDuo.webp",
+    tag: "Best Seller",
   },
   {
-    name: 'Argan Oil Shampoo',
-    desc: 'Sulfate-free nourishing shampoo for dry and damaged hair.',
-    price: '₹399',
-    image: 'https://images.pexels.com/photos/4465121/pexels-photo-4465121.jpeg',
-    tag: '',
+    name: "Beardo Godfather Beard Oil Lite",
+    desc: "A premium lightweight beard oil that nourishes, softens, and adds a healthy shine for a well-groomed beard look.",
+    price: "₹350",
+    image: "/images/products/BeardOil.webp",
+    tag: "",
   },
   {
-    name: 'Beard Growth Wax',
-    desc: 'Holds, conditions and promotes healthy beard growth.',
-    price: '₹299',
-    image: 'https://images.pexels.com/photos/4068313/pexels-photo-4068313.jpeg',
-    tag: 'New',
+    name: "MG5 Hair Wax",
+    desc: "Strong hold hair wax for long-lasting style, texture, and a smooth matte finish.",
+    price: "₹225",
+    image: "/images/products/HairWax.webp",
+    tag: "New",
   },
   {
-    name: 'Deep Conditioning Mask',
-    desc: 'Intensive repair mask for strong, lustrous hair.',
-    price: '₹449',
-    image: 'https://images.pexels.com/photos/3762880/pexels-photo-3762880.jpeg',
-    tag: '',
+    name: "Biolage Smoothproof Serum",
+    desc: "Lightweight avocado-infused serum that smooths frizz and adds silky shine to hair.",
+    price: "₹350",
+    image: "/images/products/Smoothproof.webp",
+    tag: "",
   },
   {
-    name: 'Vitamin C Face Serum',
-    desc: 'Brightens skin tone and reduces dark spots with daily use.',
-    price: '₹699',
-    image: 'https://images.pexels.com/photos/3735657/pexels-photo-3735657.jpeg',
-    tag: 'Popular',
+    name: "Dione Keratin Serum",
+    desc: "Argan oil and keratin-infused serum that nourishes hair, controls frizz, and adds silky shine.",
+    price: "₹799",
+    image: "/images/products/KeratinSerum.webp",
+    tag: "Popular",
   },
   {
-    name: 'Hair Color Kit',
-    desc: 'Professional-grade ammonia-free hair color in 20+ shades.',
-    price: '₹349',
-    image: 'https://images.pexels.com/photos/3992866/pexels-photo-3992866.jpeg',
-    tag: '',
+    name: "Osis+ Flexwax",
+    desc: "Strong hold styling wax that adds texture, definition, and long-lasting control for all hair types.",
+    price: "₹1100",
+    image: "/images/products/Flexwax.webp",
+    tag: "",
+  },
+  {
+    name: "Actrix Powder Wax",
+    desc: "Lightweight powder wax that adds instant volume, texture, and strong long-lasting hold.",
+    price: "₹425",
+    image: "/images/products/ActrixPowderWax.webp",
+    tag: "",
+  },
+  {
+    name: "Toppik Hair Fibers",
+    desc: "Instant hair building fibers that add natural-looking volume and fuller coverage for thinning hair.",
+    price: "₹999",
+    image: "/images/products/ToppikHairFibers.webp",
+    tag: "",
+  },
+  {
+    name: "Lotus Professional Phyto Rx Face Wash",
+    desc: "Gentle face washes that deeply cleanse, brighten skin, and help control oil for a fresh healthy glow.",
+    price: "₹495-₹440",
+    image: "/images/products/LotusFaceWash.webp",
+    tag: "",
+  },
+  {
+    name: "Co Luxury Hair Finishing Stick",
+    desc: "Smooth finishing stick that tames flyaways and keeps hair sleek, neat, and long-lasting.",
+    price: "₹350",
+    image: "/images/products/CoLuxuryHairFinishingStick.webp",
+    tag: "",
+  },
+  {
+    name: "One Home Care Duo",
+    desc: "Nourishing shampoo and conditioner enriched with active oils for soft, smooth, and healthy-looking hair.",
+    price: "₹3400",
+    image: "/images/products/OneHomeCareDuo.webp",
+    tag: "",
+  },
+  {
+    name: "911 Shampoo & Conditioner Duo",
+    desc: "Nourishing haircare duo that hydrates, softens, and keeps hair healthy and manageable.",
+    price: "₹4230",
+    image: "/images/products/911Duo.webp",
+    tag: "",
+  },
+  {
+    name: "L’Oréal Absolut Repair Molecular Duo",
+    desc: "Advanced shampoo and mask duo that deeply repairs damaged hair for stronger, smoother, and healthier-looking results.",
+    price: "₹3000",
+    image: "/images/products/LOrealAbsolutRepairMolecularDuo.webp",
+    tag: "",
+  },
+  {
+    name: "L’Oréal Xtenso Care Duo",
+    desc: "Keratin-enriched shampoo and masque that smooth frizz, strengthen hair, and add lasting shine.",
+    price: "₹2395",
+    image: "/images/products/LOrealXtensoCareDuo.webp",
+    tag: "",
+  },
+  {
+    name: "L’Oréal Absolut Repair Duo",
+    desc: "Professional repair shampoo and masque that deeply nourish damaged hair for softness, strength, and shine.",
+    price: "₹1835",
+    image: "/images/products/LOrealAbsolutRepairDuo.webp",
+    tag: "",
+  },
+  {
+    name: "L'Oréal Professionnel Liss Unlimited",
+    desc: "Smooth and tame unruly hair with this pro-keratin infused shampoo and mask duo for silky, frizz-free shine.",
+    price: "₹1835",
+    image: "/images/products/LOrealProfessionnelLiss.webp",
+    tag: "",
   },
 ];
 
 function orderLink(product: string) {
-  const msg = encodeURIComponent(`Hi, I'd like to order ${product}. Please share the details.`);
+  const msg = encodeURIComponent(
+    `Hi, I'd like to order ${product}. Please share the details.`,
+  );
   return `https://wa.me/${WHATSAPP}?text=${msg}`;
 }
 
@@ -61,13 +133,17 @@ export default function Products() {
           <p className="section-subtitle">Our Store</p>
           <h2 className="section-title">Premium Hair & Beauty Products</h2>
           <p className="text-gray-500 max-w-xl mx-auto mt-3">
-            Professional salon-grade products available for home use. Order directly via WhatsApp.
+            Professional salon-grade products available for home use. Order
+            directly via WhatsApp.
           </p>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
           {products.map((p) => (
-            <div key={p.name} className="bg-salon-cream rounded-2xl overflow-hidden shadow-sm card-hover group border border-gold-100">
+            <div
+              key={p.name}
+              className="bg-salon-cream rounded-2xl overflow-hidden shadow-sm card-hover group border border-gold-100"
+            >
               <div className="relative overflow-hidden h-52">
                 <img
                   src={p.image}
@@ -81,10 +157,16 @@ export default function Products() {
                 )}
               </div>
               <div className="p-5">
-                <h3 className="font-heading font-semibold text-lg text-salon-dark mb-1">{p.name}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed mb-4">{p.desc}</p>
+                <h3 className="font-heading font-semibold text-lg text-salon-dark mb-1">
+                  {p.name}
+                </h3>
+                <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                  {p.desc}
+                </p>
                 <div className="flex items-center justify-between">
-                  <span className="text-salon-dark font-bold text-xl">{p.price}</span>
+                  <span className="text-salon-dark font-bold text-xl">
+                    {p.price}
+                  </span>
                   <a
                     href={orderLink(p.name)}
                     target="_blank"

@@ -10,8 +10,7 @@ export default function Hero() {
       <div
         className="absolute inset-0 bg-cover bg-center bg-no-repeat"
         style={{
-          backgroundImage:
-            "url(https://images.pexels.com/photos/3992874/pexels-photo-3992874.jpeg)",
+          backgroundImage: "url(/images/gallery/about1.webp)",
         }}
       />
       {/* Overlay */}
