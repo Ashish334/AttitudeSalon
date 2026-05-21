@@ -7,6 +7,7 @@ import Review from "./components/Reviews";
 import Booking from "./components/Booking";
 import Contact from "./components/Contact";
 import About from "./components/About";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
       <Review />
       <Booking />
       <Contact />
+      <Footer />
     </>
   );
 }

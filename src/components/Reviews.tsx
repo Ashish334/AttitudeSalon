@@ -1,51 +1,100 @@
-import { Star, ExternalLink, Quote } from 'lucide-react';
+import { Star, ExternalLink, Quote, Copy, CheckCircle2 } from "lucide-react";
 
-const GOOGLE_REVIEWS_URL = 'https://g.page/r/YOUR_GOOGLE_PLACE_ID/review';
+import { useState } from "react";
+
+const GOOGLE_REVIEWS_URL =
+  "https://search.google.com/local/writereview?placeid=ChIJy0ulSn235zsRbTEQKABpueg";
+
+/* =========================
+   GOOGLE REVIEW REPLIES
+========================= */
+
+const happyReplies = [
+  "Thank you so much for your valuable feedback. We are delighted that you loved our service and look forward to welcoming you again at Attitude Unisex Salon.",
+
+  "Thank you for your wonderful review. Your support motivates our team to continue providing the best salon experience.",
+
+  "We truly appreciate your kind words and are glad you enjoyed your experience with us. Looking forward to serving you again soon.",
+
+  "Thank you for trusting Attitude Unisex Salon. We’re happy to know you had a great experience with our team and services.",
+
+  "Your feedback means a lot to us. Thank you for visiting Attitude Unisex Salon and sharing your experience.",
+];
+
+const premiumReplies = [
+  "Thank you for choosing Attitude Unisex Salon. It was a pleasure serving you and we are delighted to know you had a premium salon experience with us.",
+
+  "We sincerely appreciate your kind review. Your satisfaction inspires us to continue delivering luxury beauty and grooming services.",
+
+  "Thank you for your wonderful support. We are thrilled to know our services exceeded your expectations and we look forward to your next visit.",
+];
+
+const complaintReplies = [
+  "Thank you for sharing your feedback. We sincerely apologize for your experience and would love the opportunity to improve and serve you better.",
+
+  "We appreciate your honest review. Your feedback is important to us and we will work on improving our services.",
+
+  "We’re sorry your experience did not meet expectations. Thank you for bringing this to our attention and helping us improve.",
+];
+
+/* =========================
+   REVIEWS
+========================= */
 
 const reviews = [
   {
-    name: 'Rahul Sharma',
-    avatar: 'RS',
+    name: "Nitesh Pedigar",
+    avatar: "/images/review/nitesh-pedigar.webp",
     rating: 5,
-    date: '2 weeks ago',
-    text: 'Absolutely loved my haircut here! The stylist understood exactly what I wanted and the result was beyond expectations. The ambiance is premium and staff is very friendly.',
+    date: "2 weeks ago",
+    service: "Haircut",
+    text: "Absolutely loved my haircut here! The stylist understood exactly what I wanted and the result was beyond expectations.",
   },
   {
-    name: 'Priya Mehta',
-    avatar: 'PM',
+    name: "Bobby S Rathod",
+    avatar: "/images/review/bobby-rathod.webp",
     rating: 5,
-    date: '1 month ago',
-    text: 'Got my bridal makeup done here and I looked stunning on my wedding day! The team is highly professional and the work quality is top-notch. Highly recommend!',
+    date: "1 month ago",
+    service: "Bridal Makeup",
+    text: "Got my bridal makeup done here and I looked stunning on my wedding day! Highly recommended salon.",
   },
   {
-    name: 'Aakash Verma',
-    avatar: 'AV',
+    name: "Krish Patel",
+    avatar: "/images/review/krish-patel.webp",
     rating: 5,
-    date: '3 weeks ago',
-    text: 'Best beard styling in the area. Clean, sharp, and exactly what I had in mind. The salon is hygienic and the products they use are premium quality.',
+    date: "3 weeks ago",
+    service: "Beard Styling",
+    text: "Best beard styling in the area. Clean, sharp and exactly what I wanted.",
   },
   {
-    name: 'Sneha Joshi',
-    avatar: 'SJ',
+    name: "Rinku Rathod",
+    avatar: "/images/review/rinku-rathod.webp",
     rating: 5,
-    date: '1 month ago',
-    text: 'Had a fantastic hair spa experience. My hair feels so much healthier and shinier. The staff is warm and the service is value for money. Will definitely come back!',
+    date: "1 month ago",
+    service: "Hair Spa",
+    text: "Fantastic hair spa experience. My hair feels healthier and shinier.",
   },
   {
-    name: 'Mohit Gupta',
-    avatar: 'MG',
+    name: "Amee Parekh",
+    avatar: "/images/review/amee-parekh.webp",
     rating: 4,
-    date: '6 weeks ago',
-    text: 'Great salon with talented stylists. Got a hair color done and it came out exactly as I wanted. Reasonable pricing and a relaxed, comfortable environment.',
+    date: "6 weeks ago",
+    service: "Hair Color",
+    text: "Great salon with talented stylists. Loved the final hair color result.",
   },
   {
-    name: 'Ananya Singh',
-    avatar: 'AN',
+    name: "Dr. Nidhi Shah",
+    avatar: "/images/review/nidhi-shah.webp",
     rating: 5,
-    date: '2 months ago',
-    text: 'My go-to salon for all beauty needs. From facials to nail art, everything is done with precision and care. The team is always up-to-date with the latest trends.',
+    date: "2 months ago",
+    service: "Facial",
+    text: "My go-to salon for all beauty services. Professional and friendly team.",
   },
 ];
+
+/* =========================
+   STARS
+========================= */
 
 function Stars({ count }: { count: number }) {
   return (
@@ -54,78 +103,244 @@ function Stars({ count }: { count: number }) {
         <Star
           key={i}
           size={14}
-          className={i <= count ? 'text-gold-500 fill-gold-500' : 'text-gray-300'}
+          className={
+            i <= count ? "text-gold-500 fill-gold-500" : "text-gray-300"
+          }
         />
       ))}
     </div>
   );
 }
 
+/* =========================
+   COMPONENT
+========================= */
+
 export default function Reviews() {
-  const avg = (reviews.reduce((a, r) => a + r.rating, 0) / reviews.length).toFixed(1);
+  const [copied, setCopied] = useState("");
+
+  const avg = (
+    reviews.reduce((a, r) => a + r.rating, 0) / reviews.length
+  ).toFixed(1);
+
+  /* =========================
+     RANDOM REPLY GENERATOR
+  ========================= */
+
+  function randomReply(type: string) {
+    let replies = happyReplies;
+
+    if (type === "premium") {
+      replies = premiumReplies;
+    }
+
+    if (type === "complaint") {
+      replies = complaintReplies;
+    }
+
+    return replies[Math.floor(Math.random() * replies.length)];
+  }
+
+  /* =========================
+     COPY REPLY
+  ========================= */
+
+  const copyReply = (type: string) => {
+    navigator.clipboard.writeText(randomReply(type));
+
+    setCopied(type);
+
+    setTimeout(() => {
+      setCopied("");
+    }, 2000);
+  };
 
   return (
-    <section id="reviews" className="py-24 bg-salon-cream">
+    <section
+      id="reviews"
+      className="py-24 bg-gradient-to-b from-salon-cream to-white"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Header */}
+        {/* HEADER */}
+
         <div className="text-center mb-16">
           <p className="section-subtitle">What Clients Say</p>
+
           <h2 className="section-title">
             Loved by <span className="text-gold-600 italic">Thousands</span>
           </h2>
 
-          {/* Overall rating */}
-          <div className="inline-flex items-center gap-4 bg-white rounded-2xl px-8 py-4 shadow-md mt-6">
-            <div className="text-5xl font-heading font-bold text-salon-dark">{avg}</div>
+          <p className="text-gray-500 max-w-2xl mx-auto mt-4">
+            Experience luxury salon services trusted by happy clients.
+          </p>
+
+          {/* RATING BOX */}
+
+          <div className="inline-flex items-center gap-5 bg-white rounded-3xl px-8 py-5 shadow-lg mt-8 border border-gold-100">
+            <div className="text-5xl font-heading font-bold text-salon-dark">
+              {avg}
+            </div>
+
             <div>
               <div className="flex gap-1 mb-1">
                 {[1, 2, 3, 4, 5].map((i) => (
-                  <Star key={i} size={18} className="text-gold-500 fill-gold-500" />
+                  <Star
+                    key={i}
+                    size={20}
+                    className="text-gold-500 fill-gold-500"
+                  />
                 ))}
               </div>
-              <div className="text-gray-500 text-sm">Based on Google Reviews</div>
-              <div className="text-gray-400 text-xs">{reviews.length * 40}+ total reviews</div>
+
+              <div className="text-gray-500 text-sm">
+                Based on Google Reviews
+              </div>
+
+              <div className="text-gray-400 text-xs">250+ Happy Clients</div>
             </div>
           </div>
         </div>
 
-        {/* Reviews grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+        {/* SEMI AUTO REPLY BUTTONS */}
+
+        <div className="flex flex-wrap justify-center gap-4 mb-14">
+          <button
+            onClick={() => copyReply("happy")}
+            className="bg-gold-500 hover:bg-gold-600 text-white px-6 py-3 rounded-full text-sm font-medium transition shadow-md"
+          >
+            {copied === "happy" ? "Copied!" : "Copy Happy Reply"}
+          </button>
+
+          <button
+            onClick={() => copyReply("premium")}
+            className="bg-salon-dark hover:bg-black text-white px-6 py-3 rounded-full text-sm font-medium transition shadow-md"
+          >
+            {copied === "premium" ? "Copied!" : "Copy Premium Reply"}
+          </button>
+
+          <button
+            onClick={() => copyReply("complaint")}
+            className="bg-red-500 hover:bg-red-600 text-white px-6 py-3 rounded-full text-sm font-medium transition shadow-md"
+          >
+            {copied === "complaint" ? "Copied!" : "Copy Complaint Reply"}
+          </button>
+        </div>
+
+        {/* REVIEW GRID */}
+
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {reviews.map((r) => (
-            <div key={r.name} className="bg-white rounded-2xl p-6 shadow-sm card-hover relative">
-              <Quote size={32} className="text-gold-100 absolute top-4 right-4" />
-              <div className="flex items-center gap-3 mb-4">
-                <div className="w-11 h-11 rounded-full bg-gold-600 flex items-center justify-center text-white font-semibold text-sm flex-shrink-0">
-                  {r.avatar}
+            <div
+              key={r.name}
+              className="bg-white rounded-3xl p-6 shadow-md hover:shadow-2xl transition-all duration-300 border border-gold-100 relative overflow-hidden group"
+            >
+              {/* HOVER EFFECT */}
+
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition duration-300 bg-gradient-to-br from-gold-100/20 to-gold-200/10 pointer-events-none" />
+
+              {/* TOP */}
+
+              <div className="flex items-center justify-between mb-5">
+                <div className="flex items-center gap-3">
+                  <img
+                    src={r.avatar}
+                    alt={r.name}
+                    className="w-12 h-12 rounded-full object-cover border-2 border-gold-400 shadow-md"
+                  />
+                  <div>
+                    <div className="font-semibold text-salon-dark text-sm flex items-center gap-1">
+                      {r.name}
+
+                      <CheckCircle2 size={14} className="text-blue-500" />
+                    </div>
+
+                    <div className="text-gray-400 text-xs">{r.date}</div>
+                  </div>
                 </div>
-                <div>
-                  <div className="font-semibold text-salon-dark text-sm">{r.name}</div>
-                  <div className="text-gray-400 text-xs">{r.date}</div>
-                </div>
+
+                {/* GOOGLE LOGO */}
+
+                <img
+                  src="/images/review/google.webp"
+                  alt="Google"
+                  className="w-12 h-12 object-contain"
+                />
               </div>
+
+              {/* STARS */}
+
               <Stars count={r.rating} />
-              <p className="text-gray-600 text-sm leading-relaxed mt-3">{r.text}</p>
+
+              {/* SERVICE */}
+
+              <div className="inline-block mt-3 bg-gold-50 text-gold-700 text-xs font-medium px-3 py-1 rounded-full">
+                {r.service}
+              </div>
+
+              {/* REVIEW */}
+
+              <p className="text-gray-600 text-sm leading-relaxed mt-4">
+                {r.text}
+              </p>
+
+              {/* CARD BUTTONS */}
+
+              <div className="flex gap-3 mt-6">
+                <button
+                  onClick={() => copyReply("happy")}
+                  className="flex-1 flex items-center justify-center gap-2 bg-gold-500 hover:bg-gold-600 text-white text-sm font-medium py-2.5 rounded-full transition"
+                >
+                  <Copy size={15} />
+                  Copy Reply
+                </button>
+
+                <a
+                  href={GOOGLE_REVIEWS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-center bg-white border border-gold-200 hover:border-gold-400 text-salon-dark px-4 rounded-full transition"
+                >
+                  <ExternalLink size={16} />
+                </a>
+              </div>
             </div>
           ))}
         </div>
 
-        {/* CTA */}
-        <div className="text-center">
-          <a
-            href={GOOGLE_REVIEWS_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 btn-outline"
-          >
-            <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
-              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" />
-              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" />
-              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" />
-              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" />
-            </svg>
-            View All Reviews on Google
-            <ExternalLink size={14} />
-          </a>
+        {/* BOTTOM CTA */}
+
+        <div className="mt-20">
+          <div className="bg-white rounded-[32px] shadow-xl border border-gold-100 p-10 text-center max-w-4xl mx-auto">
+            <h3 className="text-3xl font-heading font-bold text-salon-dark mb-4">
+              Loved Your Experience?
+            </h3>
+
+            <p className="text-gray-500 max-w-2xl mx-auto mb-8">
+              Share your experience with us on Google and help others discover
+              our salon.
+            </p>
+            <a
+              href={GOOGLE_REVIEWS_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex flex-col sm:flex-row items-center justify-center"
+            >
+              {/* Google Side */}
+              <div className="bg-white h-[56px] sm:h-[60px] px-5 flex items-center justify-center rounded-t-full sm:rounded-l-full sm:rounded-tr-none shadow-lg w-full sm:w-auto">
+                <img
+                  src="/images/review/google.webp"
+                  alt="Google"
+                  className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+                />
+              </div>
+
+              {/* CTA Side */}
+              <div className="h-[56px] sm:h-[60px] bg-gradient-to-r from-gold-500 to-yellow-500 hover:from-gold-600 hover:to-yellow-600 text-white font-medium px-6 sm:px-8 flex items-center justify-center gap-2 rounded-b-full sm:rounded-r-full sm:rounded-bl-none shadow-lg transition-all duration-300 text-sm sm:text-base w-full sm:w-auto">
+                Write a Google Review
+                <ExternalLink size={18} />
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </section>
