@@ -117,9 +117,20 @@ const products = [
   },
 ];
 
-function orderLink(product: string) {
+function orderLink(product: any) {
+  const imageUrl = `https://attitudeunisexsalon.com/${product.image}`;
   const msg = encodeURIComponent(
-    `Hi, I'd like to order ${product}. Please share the details.`,
+    `Hi, I'd like to order:
+
+🛍 Product: ${product.name}
+
+💰 Price: ${product.price}
+
+📝 Details:
+${product.desc}
+
+🖼 Product Image:
+${imageUrl}`,
   );
   return `https://wa.me/${WHATSAPP}?text=${msg}`;
 }
