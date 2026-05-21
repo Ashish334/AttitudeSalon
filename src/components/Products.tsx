@@ -118,20 +118,25 @@ const products = [
 ];
 
 function orderLink(product: any) {
-  const imageUrl = `https://attitudeunisexsalon.com/${product.image}`;
+  const imageUrl = `https://attitudeunisexsalon.com${product.image}`;
+
   const msg = encodeURIComponent(
-    `Hi, I'd like to order:
+    `✨ *Attitude Unisex Salon* ✨
 
-🛍 Product: ${product.name}
+🛍️ *Product:* ${product.name}
 
-💰 Price: ${product.price}
+💰 *Price:* ${product.price}
 
-📝 Details:
+📝 *Product Details:*
 ${product.desc}
 
-🖼 Product Image:
-${imageUrl}`,
+🖼️ *Product Image:*
+${imageUrl}
+
+📍 Attitude Unisex Salon
+Thank you for choosing us ❤️`,
   );
+
   return `https://wa.me/${WHATSAPP}?text=${msg}`;
 }
 
@@ -179,7 +184,7 @@ export default function Products() {
                     {p.price}
                   </span>
                   <a
-                    href={orderLink(p.name)}
+                    href={orderLink(p)}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-1.5 bg-green-500 hover:bg-green-600 text-white text-sm font-medium px-4 py-2 rounded-full transition-colors"
