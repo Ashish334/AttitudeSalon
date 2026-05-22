@@ -1,7 +1,7 @@
 import { MessageCircle, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
-const WHATSAPP = "919999999999";
+const WHATSAPP = "918808841835";
 
 type ServiceItem = {
   category: string;
@@ -15,322 +15,182 @@ type ServiceItem = {
 // Lightweight WebP images via Unsplash CDN — w=400, q=70, fm=webp
 const IMG = {
   // Hair Care
-  hairwash_f:
-    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=70&fm=webp&fit=crop",
-  hairwash_m:
-    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&q=70&fm=webp&fit=crop",
-  powerwash_f:
-    "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&q=70&fm=webp&fit=crop",
-  powerwash_m:
-    "https://images.unsplash.com/photo-1621607512022-6aecc4fed814?w=400&q=70&fm=webp&fit=crop",
-  adv_hairwash_f:
-    "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&q=70&fm=webp&fit=crop",
-  adv_hairwash_m:
-    "https://images.unsplash.com/photo-1534297635766-a262cdcb8ee4?w=400&q=70&fm=webp&fit=crop",
+  hairwash_f: "/images/services/haircare/hairwash-f.webp",
+  hairwash_m: "/images/services/haircare/hairwash-m.webp",
+  powerwash_f: "/images/services/haircare/powerwash-f.webp",
+  powerwash_m: "/images/services/haircare/powerwash-m.webp",
+  adv_hairwash_f: "/images/services/haircare/advancehairwash-f.webp",
+  adv_hairwash_m: "/images/services/haircare/advancehairwash-m.webp",
   // Hair Cut
-  haircut_m:
-    "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&q=70&fm=webp&fit=crop",
-  haircut_uv_f:
-    "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&q=70&fm=webp&fit=crop",
-  adv_haircut_f:
-    "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=400&q=70&fm=webp&fit=crop",
-  adv_haircut_m:
-    "https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=400&q=70&fm=webp&fit=crop",
+  haircut_m: "/images/services/haircut/cleenhaircut-m.webp",
+  haircut_uv_f: "/images/services/haircut/haircutuv-f.webp",
+  adv_haircut_f: "/images/services/haircut/advancehaircut-f.webp",
+  adv_haircut_m: "/images/services/haircut/advancehaircut-m.webp",
   // Beard
-  clean_shave:
-    "https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=400&q=70&fm=webp&fit=crop",
-  trimming:
-    "https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&q=70&fm=webp&fit=crop",
-  beard_shape:
-    "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&q=70&fm=webp&fit=crop",
-  mustache_colour:
-    "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=400&q=70&fm=webp&fit=crop",
-  beard_colour:
-    "https://images.unsplash.com/photo-1567894340315-735d7c361db0?w=400&q=70&fm=webp&fit=crop",
+  clean_shave: "/images/services/beard/cleenshave-m.webp",
+  trimming: "/images/services/beard/Trimming-m.webp",
+  beard_shape: "/images/services/beard/beard-shape-m.webp",
+  mustache_colour: "/images/services/beard/Mustachecolour-m.webp",
+  beard_colour: "/images/services/beard/beardcolour-m.webp",
   // Hair Style
-  blowdry_f:
-    "https://images.unsplash.com/photo-1492106087820-71f1a00d2b11?w=400&q=70&fm=webp&fit=crop",
-  blowdry_m:
-    "https://images.unsplash.com/photo-1559599101-f09722fb4948?w=400&q=70&fm=webp&fit=crop",
-  tong_f:
-    "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=400&q=70&fm=webp&fit=crop",
-  tong_m:
-    "https://images.unsplash.com/photo-1582893561942-d61cebd0dcf2?w=400&q=70&fm=webp&fit=crop",
-  straighten_f:
-    "https://images.unsplash.com/photo-1527799820374-87fbb8a7e4e0?w=400&q=70&fm=webp&fit=crop",
-  straighten_m:
-    "https://images.unsplash.com/photo-1503023345310-bd7c1de61c7d?w=400&q=70&fm=webp&fit=crop",
+  blowdry_f: "/images/services/hairstyle/blowdry-f.webp",
+  blowdry_m: "/images/services/hairstyle/blowdry-m.webp",
+  tong_f: "/images/services/hairstyle/tong-hair-style-f.webp",
+  tong_m: "/images/services/hairstyle/tong-hair-style-m.webp",
+  straighten_f: "/images/services/hairstyle/straightening-f.webp",
+  straighten_m: "/images/services/hairstyle/straightening-m.webp",
   // Hair Colour
-  root_touchup_f:
-    "https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?w=400&q=70&fm=webp&fit=crop",
-  root_touchup_m:
-    "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&q=70&fm=webp&fit=crop",
-  funky_f:
-    "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&q=70&fm=webp&fit=crop",
-  funky_m:
-    "https://images.unsplash.com/photo-1582893561942-d61cebd0dcf2?w=400&q=70&fm=webp&fit=crop",
-  global_colour_f:
-    "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=400&q=70&fm=webp&fit=crop",
-  global_colour_m:
-    "https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=400&q=70&fm=webp&fit=crop",
-  highlights_f:
-    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=70&fm=webp&fit=crop",
-  highlights_m:
-    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&q=70&fm=webp&fit=crop",
+  root_touchup_f: "/images/services/haircolor/root-touchup-f.webp",
+  root_touchup_m: "/images/services/haircolor/root-touchup-m.webp",
+  funky_f: "/images/services/haircolor/funky-colour-f.webp",
+  funky_m: "/images/services/haircolor/funky-colour-m.webp",
+  global_colour_f: "/images/services/haircolor/global-colour-f.webp",
+  global_colour_m: "/images/services/haircolor/global-colour-m.webp",
+  highlights_f: "/images/services/haircolor/highlights-f.webp",
+  highlights_m: "/images/services/haircolor/highlights-m.webp",
   // Hair Spa
-  oil_massage_f:
-    "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=70&fm=webp&fit=crop",
-  oil_massage_m:
-    "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=400&q=70&fm=webp&fit=crop",
-  dandruff_f:
-    "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&q=70&fm=webp&fit=crop",
-  dandruff_m:
-    "https://images.unsplash.com/photo-1534297635766-a262cdcb8ee4?w=400&q=70&fm=webp&fit=crop",
-  spa_loreal_f:
-    "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&q=70&fm=webp&fit=crop",
-  spa_loreal_m:
-    "https://images.unsplash.com/photo-1621607512022-6aecc4fed814?w=400&q=70&fm=webp&fit=crop",
-  spa_schwarz_f:
-    "https://images.unsplash.com/photo-1522337660859-02fbefca4702?w=400&q=70&fm=webp&fit=crop",
-  spa_schwarz_m:
-    "https://images.unsplash.com/photo-1603796846097-bee99e4a601f?w=400&q=70&fm=webp&fit=crop",
-  vitamino_f:
-    "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=400&q=70&fm=webp&fit=crop",
-  vitamino_m:
-    "https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=400&q=70&fm=webp&fit=crop",
-  olaplex_f:
-    "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&q=70&fm=webp&fit=crop",
-  olaplex_m:
-    "https://images.unsplash.com/photo-1567894340315-735d7c361db0?w=400&q=70&fm=webp&fit=crop",
-  metaldx:
-    "https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400&q=70&fm=webp&fit=crop",
-  abs_repair:
-    "https://images.unsplash.com/photo-1527799820374-87fbb8a7e4e0?w=400&q=70&fm=webp&fit=crop",
-  biotop:
-    "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=70&fm=webp&fit=crop",
+  oil_massage_f: "/images/services/hairspa/head-oil-massage-f.webp",
+  oil_massage_m: "/images/services/hairspa/head-oil-massage-m.webp",
+  dandruff_f: "/images/services/hairspa/dandruff-treatments-f.webp",
+  dandruff_m: "/images/services/hairspa/dandruff-treatments-m.webp",
+  vitamino_f: "/images/services/hairspa/vitamino-colour-spa-f.webp",
+  vitamino_m: "/images/services/hairspa/vitamino-colour-spa-m.webp",
+  olaplex_f: "/images/services/hairspa/power-olaplex-spa-f.webp",
+  olaplex_m: "/images/services/hairspa/power-olaplex-spa-m.webp",
+  metaldx: "/images/services/hairspa/metal-dx-with-loreal-f.webp",
+  spa_loreal_f: "/images/services/hairspa/regular-spa-loreal-f.webp",
+  spa_loreal_m: "/images/services/hairspa/regular-spa-loreal-m.webp",
+  spa_schwarz_m: "/images/services/hairspa/regular-schwanzkopf-spa-m.webp",
+  spa_schwarz_f: "/images/services/hairspa/regular-schwanzkopf-spa-f.webp",
+  abs_repair: "/images/services/hairspa/absolute-repair-molecular-f.webp",
+  biotop: "/images/services/hairspa/biotop-911-hair-spa-f.webp",
   // Hair Treatments
-  relaxing:
-    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=70&fm=webp&fit=crop",
-  smoothening:
-    "https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?w=400&q=70&fm=webp&fit=crop",
-  rebounding:
-    "https://images.unsplash.com/photo-1527799820374-87fbb8a7e4e0?w=400&q=70&fm=webp&fit=crop",
-  keratin:
-    "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&q=70&fm=webp&fit=crop",
-  botox:
-    "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=400&q=70&fm=webp&fit=crop",
-  nanoplastea:
-    "https://images.unsplash.com/photo-1634449571010-02389ed0f9b0?w=400&q=70&fm=webp&fit=crop",
-  hair_therapy:
-    "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&q=70&fm=webp&fit=crop",
+  relaxing: "/images/services/hairtreatments/hair-relaxing.webp",
+  smoothening: "/images/services/hairtreatments/hair-smoothening.webp",
+  rebounding: "/images/services/hairtreatments/hair-rebounding.webp",
+  keratin: "/images/services/hairtreatments/hair-keratin.webp",
+  botox: "/images/services/hairtreatments/hair-botox.webp",
+  nanoplastea: "/images/services/hairtreatments/nano-plastea.webp",
+  hair_therapy: "/images/services/hairtreatments/hair-therapy.webp",
   // Threading
-  upper_lips_t:
-    "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&q=70&fm=webp&fit=crop",
-  lower_lips_t:
-    "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400&q=70&fm=webp&fit=crop",
-  chin_t:
-    "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&q=70&fm=webp&fit=crop",
-  forehead_t:
-    "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&q=70&fm=webp&fit=crop",
-  eyebrow_t:
-    "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=400&q=70&fm=webp&fit=crop",
-  nose_t:
-    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=70&fm=webp&fit=crop",
-  sidelocks_t:
-    "https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=400&q=70&fm=webp&fit=crop",
-  fullface_t:
-    "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=400&q=70&fm=webp&fit=crop",
+  upper_lips_t: "/images/services/threading/upper-lips.webp",
+  lower_lips_t: "/images/services/threading/lower-lips.webp",
+  chin_t: "/images/services/threading/chin.webp",
+  forehead_t: "/images/services/threading/forehead.webp",
+  eyebrow_t: "/images/services/threading/eyebrow.webp",
+  nose_t: "/images/services/threading/nose.webp",
+  sidelocks_t: "/images/services/threading/side-locks.webp",
+  fullface_t: "/images/services/threading/full-face.webp",
   // Face Wax
-  forehead_fw:
-    "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&q=70&fm=webp&fit=crop",
-  upperlips_fw:
-    "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&q=70&fm=webp&fit=crop",
-  lowerlips_fw:
-    "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400&q=70&fm=webp&fit=crop",
-  chin_fw:
-    "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&q=70&fm=webp&fit=crop",
-  nose_fw:
-    "https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=400&q=70&fm=webp&fit=crop",
-  sidelocks_fw:
-    "https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?w=400&q=70&fm=webp&fit=crop",
-  neck_fw:
-    "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&q=70&fm=webp&fit=crop",
-  fullface_fw:
-    "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=400&q=70&fm=webp&fit=crop",
+  forehead_fw: "/images/services/facewax/forehead-face-wax.webp",
+  upperlips_fw: "/images/services/facewax/upper-lips-wax.webp",
+  lowerlips_fw: "/images/services/facewax/lower-lips-wax.webp",
+  chin_fw: "/images/services/facewax/Chin-wax.webp",
+  nose_fw: "/images/services/facewax/nose-wax.webp",
+  sidelocks_fw: "/images/services/facewax/side-locks.webp",
+  neck_fw: "/images/services/facewax/neck-wax.webp",
+  fullface_fw: "/images/services/facewax/full-face-wax.webp",
   // Body Wax
-  underarms:
-    "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=400&q=70&fm=webp&fit=crop",
-  half_hands:
-    "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=70&fm=webp&fit=crop",
-  full_hands:
-    "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&q=70&fm=webp&fit=crop",
-  half_legs:
-    "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=400&q=70&fm=webp&fit=crop",
-  full_legs:
-    "https://images.unsplash.com/photo-1535695291162-5e0ee0d7f8a9?w=400&q=70&fm=webp&fit=crop",
-  foot_wax:
-    "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&q=70&fm=webp&fit=crop",
-  front_body_wax:
-    "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=400&q=70&fm=webp&fit=crop",
-  back_body_wax:
-    "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=70&fm=webp&fit=crop",
-  bee_wax:
-    "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&q=70&fm=webp&fit=crop",
+  underarms_f: "/images/services/bodywax/underarms-f.webp",
+  underarms_m: "/images/services/bodywax/underarms-m.webp",
+  half_hands_f: "/images/services/bodywax/half-hands-f.webp",
+  half_hands_m: "/images/services/bodywax/half-hands-m.webp",
+  full_hands_f: "/images/services/bodywax/full-hands-f.webp",
+  full_hands_m: "/images/services/bodywax/full-hands-m.webp",
+  half_legs_f: "/images/services/bodywax/half-legs-f.webp",
+  half_legs_m: "/images/services/bodywax/half-legs-m.webp",
+  full_legs_f: "/images/services/bodywax/full-legs-f.webp",
+  full_legs_m: "/images/services/bodywax/full-legs-m.webp",
+  foot_wax_f: "/images/services/bodywax/foot-wax-f.webp",
+  foot_wax_m: "/images/services/bodywax/foot-wax-m.webp",
+  front_body_wax_f: "/images/services/bodywax/front-body-wax-f.webp",
+  front_body_wax_m: "/images/services/bodywax/front-body-wax-m.webp",
+  back_body_wax_f: "/images/services/bodywax/back-body-wax-f.webp",
+  back_body_wax_m: "/images/services/bodywax/back-body-wax-m.webp",
+  bee_wax: "/images/services/bodywax/bee-wax.webp",
   // Face Bleach
-  dtan: "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=400&q=70&fm=webp&fit=crop",
-  herbal_bleach:
-    "https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=400&q=70&fm=webp&fit=crop",
-  vlcc_gold_bleach:
-    "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&q=70&fm=webp&fit=crop",
-  oxy_bleach:
-    "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=400&q=70&fm=webp&fit=crop",
-  adv_bleach:
-    "https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?w=400&q=70&fm=webp&fit=crop",
-  neck_bleach:
-    "https://images.unsplash.com/photo-1515377905703-c4788e51af15?w=400&q=70&fm=webp&fit=crop",
-  hands_bleach_f:
-    "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=70&fm=webp&fit=crop",
-  hands_bleach_m:
-    "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=400&q=70&fm=webp&fit=crop",
-  legs_bleach_f:
-    "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=400&q=70&fm=webp&fit=crop",
-  legs_bleach_m:
-    "https://images.unsplash.com/photo-1535695291162-5e0ee0d7f8a9?w=400&q=70&fm=webp&fit=crop",
-  foot_bleach_f:
-    "https://images.unsplash.com/photo-1519699047748-de8e457a634e?w=400&q=70&fm=webp&fit=crop",
-  foot_bleach_m:
-    "https://images.unsplash.com/photo-1534297635766-a262cdcb8ee4?w=400&q=70&fm=webp&fit=crop",
-  front_body_bl_f:
-    "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&q=70&fm=webp&fit=crop",
-  front_body_bl_m:
-    "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=400&q=70&fm=webp&fit=crop",
-  back_body_bl_f:
-    "https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400&q=70&fm=webp&fit=crop",
-  back_body_bl_m:
-    "https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400&q=70&fm=webp&fit=crop",
-  full_body_bleach:
-    "https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400&q=70&fm=webp&fit=crop",
+  dtan: "/images/services/facebleach/d-tan-bleach.webp",
+  herbal_bleach: "/images/services/facebleach/herbal-bleach.webp",
+  vlcc_gold_bleach: "/images/services/facebleach/vlcc-gold-bleach.webp",
+  oxy_bleach: "/images/services/facebleach/oxy-bleach.webp",
+  adv_bleach: "/images/services/facebleach/adv-bleach.webp",
+  neck_bleach: "/images/services/facebleach/neck-bleach.webp",
+  hands_bleach_f: "/images/services/facebleach/hands-bleach-f.webp",
+  hands_bleach_m: "/images/services/facebleach/hands-bleach-m.webp",
+  legs_bleach_f: "/images/services/facebleach/legs-bleach-f.webp",
+  legs_bleach_m: "/images/services/facebleach/legs-bleach-m.webp",
+  foot_bleach_f: "/images/services/facebleach/foot-bleach-f.webp",
+  foot_bleach_m: "/images/services/facebleach/foot-bleach-m.webp",
+  front_body_bl_f: "/images/services/facebleach/front-body-bleach-f.webp",
+  front_body_bl_m: "/images/services/facebleach/front-body-bleach-m.webp",
+  back_body_bl_f: "/images/services/facebleach/back-body-bleach-f.webp",
+  back_body_bl_m: "/images/services/facebleach/back-body-bleach-m.webp",
+  full_body_bleach: "/images/services/facebleach/full-body-bleach.webp",
   // VLCC Facial
-  herbal_facial:
-    "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&q=70&fm=webp&fit=crop",
-  herbal_cleanup:
-    "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&q=70&fm=webp&fit=crop",
-  diamond_facial:
-    "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&q=70&fm=webp&fit=crop",
-  diamond_cleanup:
-    "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=400&q=70&fm=webp&fit=crop",
-  gold_facial:
-    "https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=400&q=70&fm=webp&fit=crop",
-  gold_cleanup:
-    "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&q=70&fm=webp&fit=crop",
+  herbal_facial: "/images/services/vlccfacial/herbal-facial.webp",
+  herbal_cleanup: "/images/services/vlccfacial/herbal-cleanup.webp",
+  diamond_facial: "/images/services/vlccfacial/diamond-facial.webp",
+  diamond_cleanup: "/images/services/vlccfacial/diamond-cleanup.webp",
+  gold_facial: "/images/services/vlccfacial/gold-facial.webp",
+  gold_cleanup: "/images/services/vlccfacial/gold-cleanup.webp",
   // Lotus Facial
-  puravitals:
-    "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&q=70&fm=webp&fit=crop",
-  hydravitals:
-    "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&q=70&fm=webp&fit=crop",
-  preservita:
-    "https://images.unsplash.com/photo-1601049676869-702ea24cfd58?w=400&q=70&fm=webp&fit=crop",
-  dtan_whitening:
-    "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=400&q=70&fm=webp&fit=crop",
+  puravitals: "/images/services/lotusfacial/puravitals-facial.webp",
+  hydravitals: "/images/services/lotusfacial/hydravitals-facial.webp",
+  preservita: "/images/services/lotusfacial/preservita-facial.webp",
+  dtan_whitening: "/images/services/lotusfacial/d-tan-whitening-facial.webp",
   // Raga Facial
-  platinum_facial:
-    "https://images.unsplash.com/photo-1601049676869-702ea24cfd58?w=400&q=70&fm=webp&fit=crop",
-  gold_peel:
-    "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&q=70&fm=webp&fit=crop",
-  fairness_peel:
-    "https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=400&q=70&fm=webp&fit=crop",
+  platinum_facial: "/images/services/ragafacial/platinum-facial.webp",
+  gold_peel: "/images/services/ragafacial/gold-peel.webp",
+  fairness_peel: "/images/services/ragafacial/fairness-peel.webp",
   // Serenita Mask
-  pomegranate_mask:
-    "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&q=70&fm=webp&fit=crop",
-  whitening_peel:
-    "https://images.unsplash.com/photo-1512290923902-8a9f81dc236c?w=400&q=70&fm=webp&fit=crop",
-  charcoal_facial:
-    "https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?w=400&q=70&fm=webp&fit=crop",
+  pomegranate_mask: "/images/services/serenitamask/pomegranate-mask.webp",
+  whitening_peel: "/images/services/serenitamask/whitening-peel.webp",
+  charcoal_facial: "/images/services/serenitamask/charcoal-facial.webp",
   // Only Mask
-  reg_peel_mask:
-    "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&q=70&fm=webp&fit=crop",
-  pom_mask:
-    "https://images.unsplash.com/photo-1601049676869-702ea24cfd58?w=400&q=70&fm=webp&fit=crop",
-  white_peel:
-    "https://images.unsplash.com/photo-1489424731084-a5d8b219a5bb?w=400&q=70&fm=webp&fit=crop",
-  charcoal_peel:
-    "https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400&q=70&fm=webp&fit=crop",
+  reg_peel_mask: "/images/services/onlymask/reg-peel-mask.webp",
+  pom_mask: "/images/services/onlymask/pom-mask.webp",
+  white_peel: "/images/services/onlymask/white-peel.webp",
+  charcoal_peel: "/images/services/onlymask/charcoal-peel.webp",
   // Korean Facial
-  korean_glow:
-    "https://images.unsplash.com/photo-1596178065887-1198b6148b2b?w=400&q=70&fm=webp&fit=crop",
-  marine_mud:
-    "https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&q=70&fm=webp&fit=crop",
-  hydra_rich:
-    "https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400&q=70&fm=webp&fit=crop",
-  sea_boost:
-    "https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400&q=70&fm=webp&fit=crop",
-  purifying_skin:
-    "https://images.unsplash.com/photo-1524250502761-1ac6f2e30d43?w=400&q=70&fm=webp&fit=crop",
-  radiant_facial:
-    "https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=400&q=70&fm=webp&fit=crop",
+  korean_glow: "/images/services/koreanskin/korean-glow.webp",
+  marine_mud: "/images/services/koreanskin/marine-mud.webp",
+  hydra_rich: "/images/services/koreanskin/hydra-rich.webp",
+  sea_boost: "/images/services/koreanskin/sea-boost.webp",
+  purifying_skin: "/images/services/koreanskin/purifying-skin.webp",
+  radiant_facial: "/images/services/koreanskin/radiant-facial.webp",
   // Make-Up
-  basic_makeup_f:
-    "https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400&q=70&fm=webp&fit=crop",
-  basic_makeup_m:
-    "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=400&q=70&fm=webp&fit=crop",
-  party_makeup_f:
-    "https://images.unsplash.com/photo-1526045612212-70caf35c14df?w=400&q=70&fm=webp&fit=crop",
-  party_makeup_m:
-    "https://images.unsplash.com/photo-1567894340315-735d7c361db0?w=400&q=70&fm=webp&fit=crop",
-  bridal_makeup:
-    "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=400&q=70&fm=webp&fit=crop",
+  basic_makeup_f: "/images/services/makeup/basic-makeup-f.webp",
+  basic_makeup_m: "/images/services/makeup/basic-makeup-m.webp",
+  party_makeup_f: "/images/services/makeup/party-makeup-f.webp",
+  party_makeup_m: "/images/services/makeup/party-makeup-m.webp",
+  bridal_makeup: "/images/services/makeup/bridal-makeup.webp",
   // Nail Care
-  nail_cut_mani:
-    "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=70&fm=webp&fit=crop",
-  nail_cut_pedi:
-    "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=400&q=70&fm=webp&fit=crop",
-  nail_polish_mani:
-    "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=70&fm=webp&fit=crop",
-  nail_polish_pedi:
-    "https://images.unsplash.com/photo-1535695291162-5e0ee0d7f8a9?w=400&q=70&fm=webp&fit=crop",
-  vlcc_mani:
-    "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=70&fm=webp&fit=crop",
-  vlcc_pedi:
-    "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=400&q=70&fm=webp&fit=crop",
-  leg_massage:
-    "https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?w=400&q=70&fm=webp&fit=crop",
-  raga_aloe_mani:
-    "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=70&fm=webp&fit=crop",
-  raga_aloe_pedi:
-    "https://images.unsplash.com/photo-1535695291162-5e0ee0d7f8a9?w=400&q=70&fm=webp&fit=crop",
-  raga_rose_mani:
-    "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=70&fm=webp&fit=crop",
-  raga_rose_pedi:
-    "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=400&q=70&fm=webp&fit=crop",
-  raga_choc_mani:
-    "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=70&fm=webp&fit=crop",
-  raga_choc_pedi:
-    "https://images.unsplash.com/photo-1535695291162-5e0ee0d7f8a9?w=400&q=70&fm=webp&fit=crop",
-  lotus_mani:
-    "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=70&fm=webp&fit=crop",
-  lotus_pedi:
-    "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=400&q=70&fm=webp&fit=crop",
-  heel_peel:
-    "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=400&q=70&fm=webp&fit=crop",
-  purify_wax_mani:
-    "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=70&fm=webp&fit=crop",
-  purify_wax_pedi:
-    "https://images.unsplash.com/photo-1535695291162-5e0ee0d7f8a9?w=400&q=70&fm=webp&fit=crop",
+  nail_cut_mani: "/images/services/nailcare/nail-cut-mani.webp",
+  nail_cut_pedi: "/images/services/nailcare/nail-cut-pedi.webp",
+  nail_polish_mani: "/images/services/nailcare/nail-polish-mani.webp",
+  nail_polish_pedi: "/images/services/nailcare/nail-polish-pedi.webp",
+  vlcc_mani: "/images/services/nailcare/vlcc-mani.webp",
+  vlcc_pedi: "/images/services/nailcare/vlcc-pedi.webp",
+  leg_massage: "/images/services/nailcare/leg-massage.webp",
+  raga_aloe_mani: "/images/services/nailcare/raga-aloe-mani.webp",
+  raga_aloe_pedi: "/images/services/nailcare/raga-aloe-pedi.webp",
+  raga_rose_mani: "/images/services/nailcare/raga-rose-mani.webp",
+  raga_rose_pedi: "/images/services/nailcare/raga-rose-pedi.webp",
+  raga_choc_mani: "/images/services/nailcare/raga-choc-mani.webp",
+  raga_choc_pedi: "/images/services/nailcare/raga-choc-pedi.webp",
+  lotus_mani: "/images/services/nailcare/lotus-mani.webp",
+  lotus_pedi: "/images/services/nailcare/lotus-pedi.webp",
+  heel_peel: "/images/services/nailcare/heel-peel.webp",
+  purify_wax_mani: "/images/services/nailcare/purify-wax-mani.webp",
+  purify_wax_pedi: "/images/services/nailcare/purify-wax-pedi.webp",
   // Gel Polishing
-  perm_gel:
-    "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=70&fm=webp&fit=crop",
-  temp_ext:
-    "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=400&q=70&fm=webp&fit=crop",
-  polygel:
-    "https://images.unsplash.com/photo-1535695291162-5e0ee0d7f8a9?w=400&q=70&fm=webp&fit=crop",
-  nail_art:
-    "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=70&fm=webp&fit=crop",
-  gel_remove:
-    "https://images.unsplash.com/photo-1519824145371-296894a0daa9?w=400&q=70&fm=webp&fit=crop",
-  acrylic_ext:
-    "https://images.unsplash.com/photo-1535695291162-5e0ee0d7f8a9?w=400&q=70&fm=webp&fit=crop",
-  korean_soft_ext:
-    "https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400&q=70&fm=webp&fit=crop",
+  perm_gel: "/images/services/gelpolish/permanent-gel-polish.webp",
+  temp_ext: "/images/services/gelpolish/temporary-gel-ext.webp",
+  polygel: "/images/services/gelpolish/polygel.webp",
+  nail_art: "/images/services/gelpolish/nail-art.webp",
+  gel_remove: "/images/services/gelpolish/gel-remove.webp",
+  acrylic_ext: "/images/services/gelpolish/acrylic-ext.webp",
+  korean_soft_ext: "/images/services/gelpolish/korean-soft-ext.webp",
 };
 
 const services: ServiceItem[] = [
@@ -886,7 +746,7 @@ const services: ServiceItem[] = [
     gender: "Female",
     price: "₹200",
     desc: "Under arms waxing service",
-    image: IMG.underarms,
+    image: IMG.underarms_f,
   },
   {
     category: "Body Wax",
@@ -894,7 +754,7 @@ const services: ServiceItem[] = [
     gender: "Male",
     price: "₹200",
     desc: "Under arms waxing service",
-    image: IMG.underarms,
+    image: IMG.underarms_m,
   },
   {
     category: "Body Wax",
@@ -902,7 +762,7 @@ const services: ServiceItem[] = [
     gender: "Female",
     price: "₹350",
     desc: "Half hands waxing service",
-    image: IMG.half_hands,
+    image: IMG.half_hands_f,
   },
   {
     category: "Body Wax",
@@ -910,7 +770,7 @@ const services: ServiceItem[] = [
     gender: "Male",
     price: "₹400",
     desc: "Half hands waxing service",
-    image: IMG.half_hands,
+    image: IMG.half_hands_m,
   },
   {
     category: "Body Wax",
@@ -918,7 +778,7 @@ const services: ServiceItem[] = [
     gender: "Female",
     price: "₹500",
     desc: "Full hands waxing service",
-    image: IMG.full_hands,
+    image: IMG.full_hands_f,
   },
   {
     category: "Body Wax",
@@ -926,7 +786,7 @@ const services: ServiceItem[] = [
     gender: "Male",
     price: "₹600",
     desc: "Full hands waxing service",
-    image: IMG.full_hands,
+    image: IMG.full_hands_m,
   },
   {
     category: "Body Wax",
@@ -934,7 +794,7 @@ const services: ServiceItem[] = [
     gender: "Female",
     price: "₹500",
     desc: "Half legs waxing service",
-    image: IMG.half_legs,
+    image: IMG.half_legs_f,
   },
   {
     category: "Body Wax",
@@ -942,7 +802,7 @@ const services: ServiceItem[] = [
     gender: "Male",
     price: "₹600",
     desc: "Half legs waxing service",
-    image: IMG.half_legs,
+    image: IMG.half_legs_m,
   },
   {
     category: "Body Wax",
@@ -950,7 +810,7 @@ const services: ServiceItem[] = [
     gender: "Female",
     price: "₹700",
     desc: "Full legs waxing service",
-    image: IMG.full_legs,
+    image: IMG.full_legs_f,
   },
   {
     category: "Body Wax",
@@ -958,7 +818,7 @@ const services: ServiceItem[] = [
     gender: "Male",
     price: "₹800",
     desc: "Full legs waxing service",
-    image: IMG.full_legs,
+    image: IMG.full_legs_m,
   },
   {
     category: "Body Wax",
@@ -966,7 +826,7 @@ const services: ServiceItem[] = [
     gender: "Female",
     price: "₹300",
     desc: "Foot waxing service",
-    image: IMG.foot_wax,
+    image: IMG.foot_wax_f,
   },
   {
     category: "Body Wax",
@@ -974,7 +834,7 @@ const services: ServiceItem[] = [
     gender: "Male",
     price: "₹300",
     desc: "Foot waxing service",
-    image: IMG.foot_wax,
+    image: IMG.foot_wax_m,
   },
   {
     category: "Body Wax",
@@ -982,7 +842,7 @@ const services: ServiceItem[] = [
     gender: "Female",
     price: "₹600 / ₹400",
     desc: "Front body waxing service",
-    image: IMG.front_body_wax,
+    image: IMG.front_body_wax_f,
   },
   {
     category: "Body Wax",
@@ -990,7 +850,7 @@ const services: ServiceItem[] = [
     gender: "Male",
     price: "₹700 / ₹500",
     desc: "Front body waxing service",
-    image: IMG.front_body_wax,
+    image: IMG.front_body_wax_m,
   },
   {
     category: "Body Wax",
@@ -998,7 +858,7 @@ const services: ServiceItem[] = [
     gender: "Female",
     price: "₹600 / ₹400",
     desc: "Back body waxing service",
-    image: IMG.back_body_wax,
+    image: IMG.back_body_wax_f,
   },
   {
     category: "Body Wax",
@@ -1006,7 +866,7 @@ const services: ServiceItem[] = [
     gender: "Male",
     price: "₹700 / ₹500",
     desc: "Back body waxing service",
-    image: IMG.back_body_wax,
+    image: IMG.back_body_wax_m,
   },
   {
     category: "Body Wax",
@@ -1411,7 +1271,7 @@ const services: ServiceItem[] = [
   // Nail Care
   {
     category: "Nail Care",
-    name: "Cutting and Filing",
+    name: "Manicure Cutting and Filing",
     gender: "Female",
     price: "Manicure ₹150",
     desc: "Professional nail cutting and filing manicure service",
@@ -1419,7 +1279,7 @@ const services: ServiceItem[] = [
   },
   {
     category: "Nail Care",
-    name: "Cutting and Filing",
+    name: "Pedicure Cutting and Filing",
     gender: "Female",
     price: "Pedicure ₹150",
     desc: "Professional nail cutting and filing pedicure service",
@@ -1427,7 +1287,7 @@ const services: ServiceItem[] = [
   },
   {
     category: "Nail Care",
-    name: "Nail Polish Application",
+    name: "Nail Polish Manicure",
     gender: "Female",
     price: "Manicure ₹100",
     desc: "Stylish nail polish application manicure service",
@@ -1435,7 +1295,7 @@ const services: ServiceItem[] = [
   },
   {
     category: "Nail Care",
-    name: "Nail Polish Application",
+    name: "Nail Polish Pedicure",
     gender: "Female",
     price: "Pedicure ₹100",
     desc: "Stylish nail polish application pedicure service",
@@ -1443,7 +1303,7 @@ const services: ServiceItem[] = [
   },
   {
     category: "Nail Care",
-    name: "VLCC Regular",
+    name: "VLCC Regular Manicure",
     gender: "Female",
     price: "Manicure ₹600",
     desc: "VLCC regular manicure treatment",
@@ -1451,7 +1311,7 @@ const services: ServiceItem[] = [
   },
   {
     category: "Nail Care",
-    name: "VLCC Regular",
+    name: "VLCC Regular Pedicure",
     gender: "Female",
     price: "Pedicure ₹700",
     desc: "VLCC regular pedicure treatment",
@@ -1459,7 +1319,7 @@ const services: ServiceItem[] = [
   },
   {
     category: "Nail Care",
-    name: "Leg Massage",
+    name: "Leg Massage Pedicure",
     gender: "Female",
     price: "Pedicure ₹750",
     desc: "Relaxing leg massage pedicure service",
@@ -1467,7 +1327,7 @@ const services: ServiceItem[] = [
   },
   {
     category: "Nail Care",
-    name: "Raga Aloevera",
+    name: "Raga Aloevera Manicure",
     gender: "Female",
     price: "Manicure ₹1200",
     desc: "Raga Aloevera manicure treatment",
@@ -1475,7 +1335,7 @@ const services: ServiceItem[] = [
   },
   {
     category: "Nail Care",
-    name: "Raga Aloevera",
+    name: "Raga Aloevera Pedicure",
     gender: "Female",
     price: "Pedicure ₹1500",
     desc: "Raga Aloevera pedicure treatment",
@@ -1483,7 +1343,7 @@ const services: ServiceItem[] = [
   },
   {
     category: "Nail Care",
-    name: "Raga Rose",
+    name: "Raga Rose Manicure",
     gender: "Female",
     price: "Manicure ₹1200",
     desc: "Raga Rose manicure treatment",
@@ -1491,7 +1351,7 @@ const services: ServiceItem[] = [
   },
   {
     category: "Nail Care",
-    name: "Raga Rose",
+    name: "Raga Rose Pedicure",
     gender: "Female",
     price: "Pedicure ₹1500",
     desc: "Raga Rose pedicure treatment",
@@ -1499,7 +1359,7 @@ const services: ServiceItem[] = [
   },
   {
     category: "Nail Care",
-    name: "Raga Chocolate",
+    name: "Raga Chocolate Manicure",
     gender: "Female",
     price: "Manicure ₹1200",
     desc: "Raga Chocolate manicure treatment",
@@ -1507,7 +1367,7 @@ const services: ServiceItem[] = [
   },
   {
     category: "Nail Care",
-    name: "Raga Chocolate",
+    name: "Raga Chocolate Pedicure",
     gender: "Female",
     price: "Pedicure ₹1500",
     desc: "Raga Chocolate pedicure treatment",
@@ -1515,7 +1375,7 @@ const services: ServiceItem[] = [
   },
   {
     category: "Nail Care",
-    name: "Lotus Citrus",
+    name: "Lotus Citrus Manicure",
     gender: "Female",
     price: "Manicure ₹1500",
     desc: "Lotus Citrus manicure treatment",
@@ -1523,7 +1383,7 @@ const services: ServiceItem[] = [
   },
   {
     category: "Nail Care",
-    name: "Lotus Citrus",
+    name: "Lotus Citrus Pedicure",
     gender: "Female",
     price: "Pedicure ₹2000",
     desc: "Lotus Citrus pedicure treatment",
@@ -1531,7 +1391,7 @@ const services: ServiceItem[] = [
   },
   {
     category: "Nail Care",
-    name: "Heel Peel Treatments",
+    name: "Heel Peel Treatments Pedicure",
     gender: "Female",
     price: "Pedicure ₹1600",
     desc: "Heel peel pedicure treatment for soft feet",
@@ -1539,7 +1399,7 @@ const services: ServiceItem[] = [
   },
   {
     category: "Nail Care",
-    name: "Purifying Wax Hand/Foot",
+    name: "Purifying Wax Hand/Foot Manicure",
     gender: "Female",
     price: "Manicure ₹300",
     desc: "Purifying wax hand treatment",
@@ -1547,7 +1407,7 @@ const services: ServiceItem[] = [
   },
   {
     category: "Nail Care",
-    name: "Purifying Wax Hand/Foot",
+    name: "Purifying Wax Hand/Foot Pedicure",
     gender: "Female",
     price: "Pedicure ₹500",
     desc: "Purifying wax foot treatment",
@@ -1613,9 +1473,43 @@ const services: ServiceItem[] = [
 ];
 
 function whatsappLink(item: ServiceItem) {
+  const imageUrl = `https://attitudeunisexsalon.com${item.image}`;
+
   const msg = encodeURIComponent(
-    `Hi, I want to book:\nService: ${item.name}\nCategory: ${item.category}\nGender: ${item.gender}\nPrice: ${item.price}`,
+    `✨ Welcome to Attitude Unisex Salon ✨
+
+Thank you for your interest in our premium salon services.
+
+━━━━━━━━━━━━━━━
+
+💇 SERVICE NAME
+${item.name}
+
+📂 CATEGORY
+${item.category}
+
+👤 SUITABLE FOR
+${item.gender}
+
+💰 STARTING PRICE
+${item.price}
+
+📝 SERVICE DETAILS
+${item.desc}
+
+🖼️ SERVICE IMAGE
+${imageUrl}
+
+━━━━━━━━━━━━━━━
+
+📍 Attitude Unisex Salon
+Kandivali (W), Mumbai
+
+📞 Contact: +91 70456 41399
+
+We look forward to serving you with style, care & perfection ❤️`,
   );
+
   return `https://wa.me/${WHATSAPP}?text=${msg}`;
 }
 
