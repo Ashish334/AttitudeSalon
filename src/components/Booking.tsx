@@ -1,7 +1,7 @@
 import { useState, type FormEvent } from "react";
 import { CalendarDays, CheckCircle } from "lucide-react";
 
-const WHATSAPP = "918808841835";
+const WHATSAPP = "917045641399";
 
 const services = [
   "Haircut & Styling",
@@ -174,7 +174,7 @@ Our team will connect with you shortly to confirm your appointment ❤️`;
                   value={form.phone}
                   onChange={change}
                   required
-                  placeholder="+91 8808841835"
+                  placeholder="+91 7045641399"
                   className="w-full bg-white/10 border border-white/20 text-white placeholder-gray-500 rounded-xl px-4 py-3 focus:outline-none focus:border-gold-500 transition-colors"
                 />
               </div>

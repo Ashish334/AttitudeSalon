@@ -1,7 +1,7 @@
 import { MessageCircle, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
-const WHATSAPP = "918808841835";
+const WHATSAPP = "917045641399";
 
 type ServiceItem = {
   category: string;

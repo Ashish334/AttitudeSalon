@@ -1,6 +1,6 @@
 import { ShoppingBag } from "lucide-react";
 
-const WHATSAPP = "918808841835";
+const WHATSAPP = "917045641399";
 
 const products = [
   {
