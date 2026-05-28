@@ -38,27 +38,47 @@ export default function Contact() {
             {/* Contact Cards */}
             <div className="grid sm:grid-cols-2 gap-5">
               {/* Phone */}
-              <a
-                href="tel:+917045641399"
-                className="bg-white rounded-3xl p-6 shadow-md hover:shadow-xl border border-gold-100 transition-all duration-300 group"
-              >
-                <div className="w-14 h-14 rounded-2xl bg-gold-50 flex items-center justify-center mb-5 group-hover:bg-gold-600 transition-colors">
-                  <Phone
-                    size={22}
-                    className="text-gold-600 group-hover:text-white transition-colors"
-                  />
+              <div className="bg-white rounded-3xl p-6 shadow-md hover:shadow-xl border border-gold-100 transition-all duration-300">
+                <div className="w-14 h-14 rounded-2xl bg-gold-50 flex items-center justify-center mb-5">
+                  <Phone size={22} className="text-gold-600" />
                 </div>
 
-                <h3 className="font-heading font-semibold text-lg text-salon-dark mb-1">
+                <h3 className="font-heading font-semibold text-lg text-salon-dark mb-4">
                   Call Us
                 </h3>
 
-                <p className="text-gray-500 text-sm">+91 70456 41399</p>
+                <div className="space-y-3">
+                  <a
+                    href="tel:+917045641399"
+                    className="flex items-center justify-between bg-gold-50 hover:bg-gold-100 px-4 py-3 rounded-2xl transition-all duration-300 group"
+                  >
+                    <span className="text-salon-dark font-medium">
+                      +91 70456 41399
+                    </span>
 
-                <p className="text-gold-600 text-xs font-medium mt-2">
-                  Tap to call instantly
+                    <span className="text-gold-600 text-sm font-semibold group-hover:translate-x-1 transition-transform">
+                      Call →
+                    </span>
+                  </a>
+
+                  <a
+                    href="tel:+919930574048"
+                    className="flex items-center justify-between bg-gold-50 hover:bg-gold-100 px-4 py-3 rounded-2xl transition-all duration-300 group"
+                  >
+                    <span className="text-salon-dark font-medium">
+                      +91 99305 74048
+                    </span>
+
+                    <span className="text-gold-600 text-sm font-semibold group-hover:translate-x-1 transition-transform">
+                      Call →
+                    </span>
+                  </a>
+                </div>
+
+                <p className="text-gold-600 text-xs font-medium mt-4">
+                  Tap any number to call instantly
                 </p>
-              </a>
+              </div>
 
               {/* WhatsApp */}
               <a

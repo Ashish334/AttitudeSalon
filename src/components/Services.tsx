@@ -1672,6 +1672,125 @@ export default function Services() {
             onToggle={() => toggleCategory(cat)}
           />
         ))}
+        {/* Special Services Section */}
+        <div className="grid lg:grid-cols-2 gap-8 mt-16">
+          {/* Film / Shooting Makeup */}
+          <div className="relative overflow-hidden rounded-[2rem] bg-black text-white p-8 shadow-2xl group">
+            <div className="absolute inset-0 bg-gradient-to-br from-gold-500/20 to-transparent opacity-80" />
+
+            <div className="relative z-10">
+              <span className="inline-block bg-gold-500/20 text-gold-300 px-4 py-1 rounded-full text-sm font-medium mb-5">
+                Film & Shooting Services
+              </span>
+
+              <h3 className="text-3xl font-bold mb-4 leading-tight">
+                Professional Makeup for
+                <span className="text-gold-400"> Shoots & Film Industry</span>
+              </h3>
+
+              <p className="text-gray-300 leading-relaxed mb-6">
+                We provide professional makeup, hairstyling, grooming and
+                styling services for male & female artists in film shoots,
+                serials, advertisements, music videos, portfolio shoots and
+                fashion projects.
+              </p>
+
+              <div className="space-y-3 mb-8">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-gold-400" />
+                  <span>Celebrity & Model Makeup</span>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-gold-400" />
+                  <span>Bridal & Fashion Shoot Styling</span>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-gold-400" />
+                  <span>Male Grooming & HD Makeup</span>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-gold-400" />
+                  <span>Music Video & Commercial Shoot Support</span>
+                </div>
+              </div>
+
+              <a
+                href={`https://wa.me/${WHATSAPP}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-gold-500 hover:bg-gold-600 text-black font-semibold px-6 py-3 rounded-2xl transition-all duration-300"
+              >
+                <MessageCircle size={18} />
+                Book Shooting Service
+              </a>
+            </div>
+          </div>
+
+          {/* Academy / Training */}
+          <div className="relative overflow-hidden rounded-[2rem] bg-white border border-gold-100 p-8 shadow-2xl group">
+            <div className="absolute top-0 right-0 w-56 h-56 bg-gold-100 rounded-full blur-3xl opacity-50" />
+
+            <div className="relative z-10">
+              <span className="inline-block bg-gold-100 text-gold-700 px-4 py-1 rounded-full text-sm font-medium mb-5">
+                Training & Academy
+              </span>
+
+              <h3 className="text-3xl font-bold text-gray-900 mb-4 leading-tight">
+                Learn Professional Beauty &
+                <span className="text-gold-600"> Makeup Skills</span>
+              </h3>
+
+              <p className="text-gray-600 leading-relaxed mb-6">
+                Join our professional salon academy and learn makeup artistry,
+                hairstyling, nail art, skincare, grooming and advanced beauty
+                techniques from experienced experts.
+              </p>
+
+              <div className="space-y-3 mb-8">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-gold-500" />
+                  <span className="text-gray-700">
+                    Professional Makeup Courses
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-gold-500" />
+                  <span className="text-gray-700">
+                    Hair Styling & Grooming Training
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-gold-500" />
+                  <span className="text-gray-700">
+                    Nail Art & Beauty Classes
+                  </span>
+                </div>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-gold-500" />
+                  <span className="text-gray-700">
+                    Certification & Career Guidance
+                  </span>
+                </div>
+              </div>
+
+              <a
+                href={`https://wa.me/${WHATSAPP}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-black hover:bg-gray-900 text-white font-semibold px-6 py-3 rounded-2xl transition-all duration-300"
+              >
+                <MessageCircle size={18} />
+                Enquire About Academy
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
